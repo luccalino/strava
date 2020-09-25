@@ -7,4 +7,6 @@
 
 # Features
 ## Passed
-Passed is an app that automatically recognises if a pass in Europe has already been crossed. If you want to know your Pass Checkbook, switch the variable 'passed' to 1 (0 by default). The plot will appear in the plot folder.
+Passed is an app that automatically recognises if a mountain pass in Europe has already been crossed by you (with the bike obviously :D). If you want to know your Stats, switch the variable 'passed' to 1 (0 by default). Note: You also want to switch 'scrape' to 1 if you are running the script for the first time. This will scrape the pass data from quäldich.de. The plot will appear in the plot folder.
+
+## Ridges
