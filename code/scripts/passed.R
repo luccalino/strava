@@ -1,19 +1,6 @@
 # Loading packages (install if not yet installed)
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse, rvest, raster, rgdal, rgeos, strava, sp, gtools, mdthemes)
-
-# Clear environment to start from a white page
-#remove(list = ls())
-
-# Set working directory
-#setwd("/Users/laz/Library/Mobile Documents/com~apple~CloudDocs/Projects/strava/")
-
-# Select name
-#rname = "beni_kraehenmann" #"manuel_luethi "#"beni_kraehenmann" #"fabian_ruethi"
-#country = "schweiz" #"italien" #"frankreich"
-
-# Scarping pass details? (1: Yes; 0: No)
-#scrape = 0
+pacman::p_load(tidyverse, rvest, raster, rgdal, rgeos, strava, sp, gtools)
 
 ######### Scraping quälldich.de #########
 if (scrape == 1) {
@@ -148,14 +135,14 @@ if (scrape == 1) {
     rm(list = c('list_of_altitudes','list_of_names','list_of_urls','node','page','start_page'))
     
     # Saving as rData
-    save(ds, file = paste0("auxiliary_data/pass_data_",countries[c],".Rdata"))
+    save(ds, file = paste0("data/pass_data/pass_data_",countries[c],".Rdata"))
   
   }
   
 }
 
 # Loading pass data
-load(paste0("auxiliary_data/pass_data_",country,".Rdata"))
+load(paste0("data/pass_data/pass_data_",country,".Rdata"))
 
 # Drop Schotter and Sackgasse from pass data
 pass_info <- subset(ds, is.na(type) | type == "quaeldich-Reise" | type == "Pavé")
@@ -211,7 +198,7 @@ plot(pass_polygons)
 # }
 
 # Loading Rdata file
-load(paste0(rname,"/export_data/data.Rdata"))
+load("data/data.Rdata")
 
 # Select only rides (or NA)
 #types <- unique(rides$type)
@@ -304,7 +291,7 @@ ggsave(plot = p,
        height = 210,  
        unit = "mm", 
        dpi = 400, 
-       filename = paste0(rname,"/plots/passed_",country,".png"))
+       filename = paste0("plots/passed_",country,".png"))
 
 # Plotting spatial map
 #ggplot() +
