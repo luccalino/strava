@@ -1,5 +1,7 @@
+### Note: This code comes from: https://github.com/marcusvolz/strava Great stuff! ###
+
 # Loading Rdata file
-load(paste0(paste0(rname,"/export_data/data.Rdata")))
+load("data/data.Rdata")
 
 # Function for processing an activity on a minute-by-minute basis; active = 1, not active = 0
 compute_day_curve <- function(df_row) {
@@ -64,5 +66,4 @@ ggsave(plot = p,
        height = 210,  
        unit = "mm", 
        dpi = 400, 
-       filename = paste0("/Users/laz/Library/Mobile Documents/com~apple~CloudDocs/Projects/strava/data/friends/",rname,"/plots/ridges.png"))
-
+       filename = "plots/ridges.png")
