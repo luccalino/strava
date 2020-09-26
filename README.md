@@ -1,4 +1,4 @@
-# Strava data cumputations and visualisations
+# Strava data computations and visualisations
 This repository uses sports activity data from Strava, manipulates it and generates several outputs/visualisations. Hava a look.
 
 Preliminary remarks: To access the material in its entirety, you need to have a working installation of R and Python3 installed.
