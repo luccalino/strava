@@ -1,6 +1,6 @@
 # Loading packages (install if not yet installed)
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(strava, gtools, reticulate)
+pacman::p_load(tidyverse, strava, gtools, reticulate)
 
 # Set the path to the Python executable file
 use_python(python_path, required = T)
