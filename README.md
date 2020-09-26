@@ -4,7 +4,7 @@ This repository uses sports activity data from Strava, manipulates it and genera
 Preliminary remarks: To access the material in its entirety, you need to have a working installation of R and Python3 installed.
 
 ## Data import
-There are two ways elaboraed here to get your Strava data.
+There are two methods elaboraed here to get your Strava data.
 
 ### 1. Request your archive
 1. Request your Strava archive via E-Mail. In your Strava account: Settings -> My Account -> Download or Delete Your Account (Get started) -> Request Your Archive.
