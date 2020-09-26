@@ -3,7 +3,7 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load(strava, gtools, reticulate)
 
 # Set the path to the Python executable file
-use_python("/Users/laz/opt/anaconda3/bin/python", required = T)
+use_python(python_path, required = T)
 
 # Check the version of python
 py_config()
