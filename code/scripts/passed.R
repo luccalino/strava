@@ -120,13 +120,6 @@ if (scrape == 1) {
     ds$altitude <- as.numeric(ds$altitude)
     ds$id <- row.names(ds)
     
-    # Manual adjustments
-    #ds$lat[ds$name == "Col du Grand St. Bernard"] <- 45.893939
-    #ds$lon[ds$name == "Col du Grand St. Bernard"] <- 7.186463
-    
-    #ds$lat[ds$name == "Simplonpass"] <- 46.249959
-    #ds$lon[ds$name == "Simplonpass"] <- 8.031432
-    
     # Remove relevant missing values
     ds <- ds %>% 
       drop_na(lat, lon)
@@ -153,8 +146,6 @@ pass_info$id <- as.integer(seq(length = nrow(pass_info)))
 pass_info <- pass_info %>%
   dplyr::select(id, everything())
 row.names(pass_info) <- pass_info$id
-
-### Source: https://www.neonscience.org/field-data-polygons-centroids ###
 
 # Set the radius for the plots (radius in meters/ WGS84-Scaling Factor)
 radius = 70/10000
@@ -183,28 +174,10 @@ pass_polygons <- SpatialPolygons(mapply(function(poly, id) {
 split(square, row(square)), ID), proj4string = CRS(as.character("+proj=longlat +datum=WGS84")))
 
 # Preliminary plot
-plot(pass_polygons)
-
-######### Riding data #########
-# Import strava activity data if not yet done
-# if(!file.exists(paste0("data/friends/",rname,"/export_data/data.Rdata"))) {
-#   
-#   # Loading GPX files
-#   rides <- process_data(paste0("data/friends/",rname,"/export_data/activities"))
-#   
-#   # Saving as Rdata
-#   save(rides, file = paste0("data/friends/",rname,"/export_data/data.Rdata"))
-#   
-# }
+#plot(pass_polygons)
 
 # Loading Rdata file
 load("data/data.Rdata")
-
-# Select only rides (or NA)
-#types <- unique(rides$type)
-#rides_new <- subset(rides, is.na(type) | type == "Ride" | type == "Ride 3")
-#rides$id_new <- as.integer(seq(length = nrow(rides)))
-#row.names(rides) <- rides$id_new
   
 # Select relevant variables
 rides <- data %>% 
@@ -216,7 +189,7 @@ rides_spatial <- as(rides,"SpatialPoints")
 proj4string(rides_spatial) <- CRS("+proj=longlat +datum=WGS84")
 proj4string(rides_spatial) <- proj4string(pass_polygons)
   
-# Check if points are in pass polygone
+# Check if points are in pass polygons
 output <- over(rides_spatial, pass_polygons)
 
 # Keep only passed and unique SpatialPoints
@@ -292,46 +265,3 @@ ggsave(plot = p,
        unit = "mm", 
        dpi = 400, 
        filename = paste0("plots/passed_",country,".png"))
-
-# Plotting spatial map
-#ggplot() +
-  # geom_path(data = rides,
-  #            aes(long, lat, group = id), size = 2, show.legend = FALSE) +
-  # geom_point(data = rides,
-  #            aes(long, lat, group = id), color = "black", show.legend = FALSE) +
-#  geom_polygon(data = pass_polygons,
-#               aes(long, lat, group = id), show.legend = FALSE, color = "red", fill = NA) 
-#
-#  coord_map(xlim=c(xmin,xmax), ylim=c(ymin,ymax))
-
-######### Debugging #########
-#ggsave(plot = p, 
-#       width = 297,
-#       height = 210,  
-#       unit = "mm", 
-#       dpi = 400, 
-#       filename = paste0("/Users/laz/Library/Mobile Documents/com~apple~CloudDocs/Projects/strava/data/friends/",rname,"/plots/passt_2.png"))
-
-#Plotting polygons
-#data <- process_data(paste0("data/friends/",rname,"/export_data/activities"))
-#rides <- read.csv("/Users/laz/Library/Mobile Documents/com~apple~CloudDocs/Projects/strava/data/rides_n_runs_20200913.csv", header = TRUE)
-# 
-# x_center = 8.414970 # 9.330371 #7.186463 #8.034470 #9.837870
-# y_center = 46.572400 #46.505538 #45.893939 #46.251000 #46.582500
-# 
-# xmin= x_center - 0.15
-# xmax= x_center + 0.15
-# ymin= y_center - 0.15
-# ymax= y_center + 0.15
-# 
-# ggplot() +
-#   geom_path(data = data,
-#              aes(lon, lat, group = id), size = 2, show.legend = FALSE) +
-#   geom_point(data = data,
-#              aes(lon, lat, group = id), color = "black", show.legend = FALSE) +
-#   geom_polygon(data = pass_polygons,
-#                aes(long, lat, group = id), show.legend = FALSE, color = "red", fill = NA) +
-#   coord_map(xlim=c(xmin,xmax), ylim=c(ymin,ymax))
-
-    
-
