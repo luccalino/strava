@@ -7,6 +7,7 @@ setwd("/Users/laz/Library/Mobile Documents/com~apple~CloudDocs/Projects/strava/d
 # Select variables
 rname = "Your_name" 
 country = "schweiz" #"italien" #"frankreich"
+python_path = "/Users/laz/opt/anaconda3/bin/python" # Your path where the python executable is located
 
 # Table of contents (1: Execute; 0: Chill...)
 import = 0 # Data import
