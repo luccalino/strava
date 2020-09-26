@@ -1,20 +1,18 @@
 # Clear environment to start from a white page
 remove(list = ls())
 
-# Set working directory
+# Set working directory (Your working directory!)
 setwd("/Users/laz/Library/Mobile Documents/com~apple~CloudDocs/Projects/strava/data/friends/")
 
 # Select variables
-rname = "romy_pollard" #"manuel_luethi "#"beni_kraehenmann" #"fabian_ruethi"
+rname = "Your_name" 
 country = "schweiz" #"italien" #"frankreich"
-type = ""
 
-# Table of contents (1: Yes; 0: No)
-import = 1
-ridges = 0
-passed = 0
-scrape = 0
-maps = 0
+# Table of contents (1: Execute; 0: Chill...)
+import = 0 # Data import
+ridges = 0 # Plots ridges
+passed = 0 # Plots Pass Checkbook 
+scrape = 0 # Scrape Pass Info from quäldich.de
 
 # Execute scripts
 if (import == 1) {
@@ -25,7 +23,4 @@ if (ridges == 1) {
 }
 if (passed == 1) {
   source("code/scripts/passed.R")
-}
-if (maps == 1) {
-  source("code/scripts/maps.R")
 }
