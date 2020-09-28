@@ -1,5 +1,5 @@
 # Strava data computations and visualisations
-This repository uses sports activity data from Strava, manipulates it and generates several outputs/visualisations. Hava a look.
+This repository uses sports activity data from Strava and generates several outputs/visualisations. Hava a look.
 
 Preliminary remarks: To access the material in its entirety, you need to have a working installation of R and Python3 installed.
 
@@ -20,6 +20,8 @@ More on this soon.
 
 ## Passed
 Passed is a programm that automatically recognises if you have already climbed a mountain pass in Switzerland, France or Italy (with the bike obviously...). Since there is a myraid of passes, it is challenging to keep track of your stats. This programm approaches this challenge systematically and automatically. If you want to know your Stats, switch the variable _passed_ to 1 (0 by default) in the _makefile.R_. **Note**: Since data is already loaded, change _import_ to 0. You also want to switch _scrape_ to 1 to get fresh pass data. If switched on, this will scrape pass info from quäldich.de. There is a working file provided within this folder. Thus, scraping pass info is not required. Have a look at your stats in the _plot_ folder.
+
+![alt text](http://url/to/img.png)
 
 ## Ridges
 More to come soon.
